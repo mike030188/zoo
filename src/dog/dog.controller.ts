@@ -4,10 +4,10 @@ import { Request } from 'express';
 
 @Controller('dog')
 export class DogController {
-  constructor(private readonly dogService: DogService) {}
+  constructor(private readonly dogService: DogService) {} // dogService "object"ni yasab olyapmiz
   @Get() // rest api methodi "Get" decoratori
   public getHello(): string {
-    return this.dogService.getHello();
+    return this.dogService.getHello(); // constructorda bo`lgani sabab "this" dan foyd.
   }
 
   // localhost:3000/dog/greet

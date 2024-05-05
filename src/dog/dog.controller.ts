@@ -1,11 +1,11 @@
-import { Controller, Get, Req, Param, Query } from '@nestjs/common';
+import { Controller, Get, Req, Param, Query, Post, Body } from '@nestjs/common';
 import { DogService } from './dog.service';
 import { Request } from 'express';
 
 @Controller('dog')
 export class DogController {
   constructor(private readonly dogService: DogService) {}
-  @Get() // rest api methodi
+  @Get() // rest api methodi "Get" decoratori
   public getHello(): string {
     return this.dogService.getHello();
   }
@@ -45,5 +45,11 @@ export class DogController {
     console.log('params:', params);
     console.log('query:', query);
     return this.dogService.introduce();
+  }
+
+  @Post('edit') // rest api methodi "Post" decorator, => POSTMAN.dan create new req."POST"
+  public modifyDetail(@Body() body: any): string {
+    console.log('body:', body);
+    return this.dogService.modifyDetail();
   }
 }
